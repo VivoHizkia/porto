@@ -13,7 +13,7 @@ export const profile = {
   role: 'Full-Stack Developer',
   location: 'Tangerang Selatan, Indonesia',
   intro:
-    'One year of full-time web operations work and more than two years of internship and freelance projects, building dashboards, internal business systems, and mobile apps. I work across the stack: the interface people use, the API behind it, and the data underneath.',
+    'I work across the whole stack, from the interface people use to the API behind it and the data underneath. As a system engineer I also kept production web services running.',
   email: 'vivoimanuel22@gmail.com',
   phoneDisplay: '+62 812-1121-1030',
   phoneHref: 'tel:+6281211211030',
@@ -63,4 +63,39 @@ export const skillGroups: SkillGroup[] = [
     summary: 'Models and bots wired into products.',
     skills: ['Gemini API', 'Claude API', 'BM25 retrieval', 'Trading bots', 'Telegram bots'],
   },
+]
+
+export const buildPhrases = [
+  'dashboards',
+  'internal business systems',
+  'mobile apps',
+  'AI chatbots',
+  'trading bots',
+]
+
+export const stats = [
+  { value: 1, suffix: '+', label: 'year full-time in web operations' },
+  { value: 2, suffix: '+', label: 'years of internships and freelance' },
+  { value: 14, suffix: '', label: 'projects built' },
+]
+
+export const marqueeItems = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'Vue.js',
+  'Node.js',
+  'Laravel',
+  'Express',
+  'Hono',
+  'MySQL',
+  'PostgreSQL',
+  'MongoDB',
+  'Firebase',
+  'Prisma',
+  'Kotlin',
+  'React Native',
+  'Docker',
+  'Python',
+  'Three.js',
 ]

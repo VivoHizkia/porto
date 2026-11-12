@@ -3,10 +3,10 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
 const COLORS = {
-  interface: '#9db0ff',
-  server: '#ffb84d',
-  data: '#6be3b8',
-  packet: '#ece9df',
+  interface: '#22d3ee',
+  server: '#a78bfa',
+  data: '#f472b6',
+  packet: '#ffffff',
 }
 
 const LAYER_GAP = 1.55
@@ -27,7 +27,7 @@ function Shape({ geometry, position, color, fill = 0.1 }: ShapeProps) {
   return (
     <group position={position}>
       <mesh geometry={geometry}>
-        <meshBasicMaterial color={color} transparent opacity={fill} depthWrite={false} />
+        <meshBasicMaterial color={color} transparent opacity={fill} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
       <lineSegments geometry={edges}>
         <lineBasicMaterial color={color} transparent opacity={0.9} />
@@ -87,7 +87,7 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 function FitCamera() {
   const { camera, size } = useThree()
   useEffect(() => {
-    camera.zoom = Math.min(size.width / 5.6, size.height / 6.6)
+    camera.zoom = Math.min(size.width / 5.4, size.height / 7.6)
     camera.updateProjectionMatrix()
   }, [camera, size])
   return null
@@ -116,16 +116,19 @@ function Stack({ animated }: { animated: boolean }) {
     const time = clock.elapsedTime
     startedAt.current ??= time
     const intro = easeOutCubic(Math.min((time - startedAt.current) / INTRO_SECONDS, 1))
-    const spread = (1 - intro) * INTRO_SPREAD
+    /* Scrolling pulls the layers apart and turns the stack. */
+    const scroll = Math.min(window.scrollY / window.innerHeight, 1)
+    const spread = (1 - intro) * INTRO_SPREAD + scroll * 0.9
 
     if (top.current) top.current.position.y = LAYER_GAP + spread
     if (bottom.current) bottom.current.position.y = -LAYER_GAP - spread
 
     if (root.current) {
-      const targetY = Math.sin(time * 0.25) * 0.12 + pointer.current.x * 0.3
-      const targetX = pointer.current.y * 0.12
-      root.current.rotation.y += (targetY - root.current.rotation.y) * 0.05
-      root.current.rotation.x += (targetX - root.current.rotation.x) * 0.05
+      const targetY = time * 0.14 + pointer.current.x * 0.5 + scroll * 1.4
+      const targetX = pointer.current.y * 0.16
+      root.current.rotation.y += (targetY - root.current.rotation.y) * 0.06
+      root.current.rotation.x += (targetX - root.current.rotation.x) * 0.06
+      root.current.position.y = Math.sin(time * 0.9) * 0.1
     }
 
     PACKETS.forEach((packet, index) => {
@@ -170,7 +173,7 @@ function Stack({ animated }: { animated: boolean }) {
           }}
           position={[packet.x, (index - 2) * 0.6, packet.z]}
         >
-          <sphereGeometry args={[0.07, 12, 12]} />
+          <sphereGeometry args={[0.09, 12, 12]} />
           <meshBasicMaterial color={COLORS.packet} transparent opacity={animated ? 0 : 0.9} />
         </mesh>
       ))}

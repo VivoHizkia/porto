@@ -7,7 +7,19 @@ export type Project = {
   layers: Layer[]
   repo?: string
   live?: string
+  cover?: CoverKind
+  kind?: ProjectKind
 }
+
+export type CoverKind = 'trading' | 'templates' | 'chat' | 'ledger'
+export type ProjectKind = 'web' | 'mobile' | 'python'
+
+export const PROJECT_FILTERS: { value: ProjectKind | 'all'; label: string }[] = [
+  { value: 'all', label: 'All' },
+  { value: 'web', label: 'Web' },
+  { value: 'mobile', label: 'Mobile and games' },
+  { value: 'python', label: 'Python' },
+]
 
 const repo = (name: string) => `https://github.com/VivoHizkia/${name}`
 
@@ -19,6 +31,7 @@ export const featuredProjects: Project[] = [
     tech: ['TypeScript', 'Next.js', 'Node.js', 'Binance API', 'Telegram'],
     layers: ['interface', 'server', 'data'],
     repo: repo('Ai-agent-trading'),
+    cover: 'trading',
   },
   {
     name: 'TemplateBin',
@@ -27,6 +40,7 @@ export const featuredProjects: Project[] = [
     tech: ['Next.js 16', 'TypeScript', 'Prisma', 'SQLite', 'Tailwind CSS'],
     layers: ['interface', 'server', 'data'],
     repo: repo('TEMPLATEBIN'),
+    cover: 'templates',
   },
   {
     name: 'PlacidWay Knowledge Chatbot',
@@ -35,6 +49,7 @@ export const featuredProjects: Project[] = [
     tech: ['Next.js 16', 'TypeScript', 'BM25', 'Gemini', 'cheerio'],
     layers: ['interface', 'server'],
     repo: repo('Built-chatbot-assessment'),
+    cover: 'chat',
     live: 'https://built-chatbot-assessment.vercel.app',
   },
   {
@@ -44,12 +59,14 @@ export const featuredProjects: Project[] = [
     tech: ['Hono', 'Prisma', 'PostgreSQL', 'React', 'Vite', 'Tailwind CSS'],
     layers: ['interface', 'server', 'data'],
     repo: repo('accounting-system'),
+    cover: 'ledger',
   },
 ]
 
 export const moreProjects: Project[] = [
   {
     name: 'BengkelOnline',
+    kind: 'mobile',
     summary:
       'An Android app for car workshops built with MVVM. Firebase handles sign-in, Firestore and Realtime Database storage, Cloud Functions, and push notifications.',
     tech: ['Kotlin', 'Jetpack Compose', 'Firebase'],
@@ -58,6 +75,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'BlockNest',
+    kind: 'mobile',
     summary:
       'A cross-platform, Twitter-style forum for cryptocurrency users, with user and post search and backend APIs for posts and real-time interactions.',
     tech: ['Ionic', 'React', 'Tailwind CSS', 'PHP', 'Python', 'Node.js'],
@@ -66,6 +84,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'SDN Cihuni II school website',
+    kind: 'web',
     summary:
       'A Laravel CMS with an admin panel that lets school staff manage homepage text, images, and documents without coding.',
     tech: ['Laravel', 'MySQL'],
@@ -73,6 +92,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Fishing Tycoon',
+    kind: 'mobile',
     summary:
       'An open-world desktop fishing game: catch and sell fish, buy gear, and explore new areas, with endless level progression and an in-game economy.',
     tech: ['Unity', 'C#'],
@@ -81,6 +101,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Klipin',
+    kind: 'web',
     summary:
       'A toolkit for short-video creators: hook, idea, and hashtag generators, a saved library, and a weekly schedule planner with calendar export.',
     tech: ['React', 'Express', 'Tailwind CSS', 'Claude API'],
@@ -89,6 +110,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Saham Detections',
+    kind: 'python',
     summary:
       'A dashboard that screens Indonesian (IDX) stocks and scores buy signals from moving averages, RSI, MACD, and volume.',
     tech: ['Python', 'Streamlit', 'pandas', 'Plotly'],
@@ -97,6 +119,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Todo with undo and redo',
+    kind: 'web',
     summary: 'A todo list with full undo and redo, built around a custom history hook.',
     tech: ['React', 'TypeScript'],
     layers: ['interface'],
@@ -104,6 +127,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Invoice App',
+    kind: 'web',
     summary:
       'An invoice manager from the Frontend Mentor challenge: create, edit, filter, and mark invoices as paid, in light or dark mode.',
     tech: ['React', 'Redux Toolkit', 'Tailwind CSS'],
@@ -112,6 +136,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Task System',
+    kind: 'python',
     summary: 'A task scheduler with per-user quotas, saved state, and logging, written as a refactoring exercise.',
     tech: ['Python'],
     layers: ['server', 'data'],
@@ -119,6 +144,7 @@ export const moreProjects: Project[] = [
   },
   {
     name: 'Tidy Tide Laundry',
+    kind: 'web',
     summary:
       'A responsive single-page WordPress site for a laundry business, set up so services and prices can be updated without code.',
     tech: ['WordPress'],
