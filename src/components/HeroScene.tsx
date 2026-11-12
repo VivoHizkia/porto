@@ -4,8 +4,8 @@ import * as THREE from 'three'
 
 const COLORS = {
   interface: '#22d3ee',
-  server: '#a78bfa',
-  data: '#f472b6',
+  server: '#60a5fa',
+  data: '#fbbf24',
   packet: '#ffffff',
 }
 

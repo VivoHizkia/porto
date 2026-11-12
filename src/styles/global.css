@@ -13,12 +13,12 @@
   --muted: #9296ab;
 
   --cyan: #22d3ee;
-  --violet: #a78bfa;
-  --pink: #f472b6;
+  --violet: #60a5fa;
+  --pink: #fbbf24;
   --interface: var(--cyan);
   --server: var(--violet);
   --data: var(--pink);
-  --rainbow: linear-gradient(100deg, var(--cyan), var(--violet) 50%, var(--pink));
+  --rainbow: linear-gradient(100deg, #22d3ee, #3b82f6);
 
   --font-display: 'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Instrument Sans Variable', 'Segoe UI', system-ui, sans-serif;
@@ -149,9 +149,9 @@ button {
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(38% 42% at 18% 22%, rgb(124 58 237 / 0.34), transparent 70%),
+    radial-gradient(38% 42% at 18% 22%, rgb(37 99 235 / 0.3), transparent 70%),
     radial-gradient(34% 40% at 84% 30%, rgb(34 211 238 / 0.22), transparent 70%),
-    radial-gradient(40% 44% at 60% 88%, rgb(244 114 182 / 0.2), transparent 70%);
+    radial-gradient(40% 44% at 60% 88%, rgb(14 116 144 / 0.22), transparent 70%);
   filter: blur(20px);
   animation: drift 26s ease-in-out infinite alternate;
 }
@@ -173,7 +173,7 @@ button {
   width: 36rem;
   height: 36rem;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(167 139 250 / 0.13), transparent);
+  background: radial-gradient(closest-side, rgb(59 130 246 / 0.13), transparent);
   pointer-events: none;
 }
 
@@ -216,14 +216,14 @@ button {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(22rem circle at var(--mx) var(--my), rgb(167 139 250 / 0.2), transparent 60%);
+  background: radial-gradient(22rem circle at var(--mx) var(--my), rgb(59 130 246 / 0.2), transparent 60%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
 }
 
 .glow-card:hover {
-  border-color: rgb(167 139 250 / 0.55);
+  border-color: rgb(59 130 246 / 0.55);
 }
 
 .glow-card:hover::before {
@@ -352,15 +352,7 @@ button {
 
 .hero__name span {
   display: inline-block;
-  padding-bottom: 0.08em;
-  background: linear-gradient(100deg, #fff 0 38%, var(--cyan) 46%, var(--violet) 52%, var(--pink) 58%, #fff 66% 100%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation:
-    rise 0.9s var(--ease) both,
-    sheen 7s linear infinite;
+  animation: rise 0.9s var(--ease) both;
 }
 
 @keyframes rise {
@@ -370,25 +362,13 @@ button {
   }
 }
 
-@keyframes sheen {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: -50% 0;
-  }
-}
-
 .hero__role {
   width: fit-content;
   margin-top: 1rem;
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 2.6vw, 1.9rem);
   font-weight: 600;
-  background: var(--rainbow);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--cyan);
   animation: rise 0.9s var(--ease) 0.35s both;
 }
 
@@ -464,12 +444,12 @@ button {
   border-color: transparent;
   background: var(--rainbow);
   color: #0a0a14;
-  box-shadow: 0 0.5rem 2rem -0.5rem rgb(167 139 250 / 0.7);
+  box-shadow: 0 0.5rem 2rem -0.5rem rgb(59 130 246 / 0.7);
 }
 
 .button--primary:hover {
   border-color: transparent;
-  box-shadow: 0 0.8rem 2.6rem -0.4rem rgb(167 139 250 / 0.95);
+  box-shadow: 0 0.8rem 2.6rem -0.4rem rgb(59 130 246 / 0.95);
 }
 
 .hero__stats {
@@ -513,7 +493,7 @@ button {
 .hero__canvas {
   height: min(74svh, 38rem);
   min-height: 22rem;
-  filter: drop-shadow(0 0 14px rgb(167 139 250 / 0.55)) drop-shadow(0 0 40px rgb(34 211 238 / 0.25));
+  filter: drop-shadow(0 0 14px rgb(59 130 246 / 0.55)) drop-shadow(0 0 40px rgb(34 211 238 / 0.25));
 }
 
 .hero__fallback {
@@ -729,7 +709,7 @@ button {
 }
 
 .timeline::after {
-  background: linear-gradient(var(--cyan), var(--violet), var(--pink));
+  background: linear-gradient(var(--cyan), #3b82f6);
   box-shadow: 0 0 1rem var(--violet);
   transform: scaleY(var(--progress));
   transform-origin: top;
@@ -785,7 +765,7 @@ button {
   margin-left: 0.5rem;
   padding: 0.1rem 0.6rem;
   border-radius: 999px;
-  background: rgb(167 139 250 / 0.18);
+  background: rgb(59 130 246 / 0.18);
   color: var(--violet);
   font-size: 0.8rem;
 }
@@ -1045,7 +1025,7 @@ button {
   justify-content: center;
   gap: 5%;
   padding: 1.5rem;
-  background: radial-gradient(80% 90% at 30% 0%, rgb(244 114 182 / 0.28), transparent 70%);
+  background: radial-gradient(80% 90% at 30% 0%, rgb(251 191 36 / 0.2), transparent 70%);
 }
 
 .mini-page {
@@ -1073,11 +1053,11 @@ button {
 }
 
 .mini-page:nth-child(2) span {
-  background: linear-gradient(140deg, var(--pink), #fb923c);
+  background: linear-gradient(140deg, #3b82f6, #1e3a8a);
 }
 
 .mini-page:nth-child(3) span {
-  background: linear-gradient(140deg, #4ade80, var(--cyan));
+  background: linear-gradient(140deg, #0e7490, var(--cyan));
 }
 
 .mini-page i {
@@ -1105,7 +1085,7 @@ button {
   justify-content: center;
   gap: 0.6rem;
   padding: 1.5rem;
-  background: radial-gradient(80% 90% at 80% 0%, rgb(167 139 250 / 0.3), transparent 70%);
+  background: radial-gradient(80% 90% at 80% 0%, rgb(59 130 246 / 0.3), transparent 70%);
 }
 
 .bubble {
@@ -1189,7 +1169,7 @@ button {
   flex: 1;
   height: var(--h);
   border-radius: 0.4rem 0.4rem 0 0;
-  background: linear-gradient(var(--cyan), rgb(167 139 250 / 0.35));
+  background: linear-gradient(var(--cyan), rgb(59 130 246 / 0.35));
   transform-origin: bottom;
   animation: candle 3s var(--ease) calc(var(--i) * -0.4s) infinite alternate;
 }
@@ -1229,7 +1209,7 @@ button {
   inset: -2px;
   z-index: -2;
   border-radius: inherit;
-  background: conic-gradient(from var(--spin), var(--cyan), var(--violet), var(--pink), var(--cyan));
+  background: conic-gradient(from var(--spin), var(--cyan), #1d4ed8, #0b1220, var(--cyan));
   animation: spin 6s linear infinite;
 }
 
@@ -1240,7 +1220,7 @@ button {
   z-index: -1;
   border-radius: inherit;
   background:
-    radial-gradient(60% 80% at 100% 0%, rgb(167 139 250 / 0.22), transparent 70%),
+    radial-gradient(60% 80% at 100% 0%, rgb(59 130 246 / 0.22), transparent 70%),
     var(--surface);
 }
 
@@ -1262,7 +1242,7 @@ button {
   line-height: 1.1;
   overflow-wrap: anywhere;
   text-decoration: none;
-  background: linear-gradient(var(--cyan), var(--pink)) left bottom / 0 3px no-repeat;
+  background: linear-gradient(var(--cyan), var(--cyan)) left bottom / 0 3px no-repeat;
   transition: background-size 0.5s var(--ease);
 }
 

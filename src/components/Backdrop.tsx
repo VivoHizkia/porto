@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-const PALETTE = ['#22d3ee', '#a78bfa', '#f472b6', '#ffffff', '#ffffff']
+const PALETTE = ['#22d3ee', '#60a5fa', '#ffffff', '#ffffff']
 const COUNT = 1400
 
 function Particles({ animated }: { animated: boolean }) {

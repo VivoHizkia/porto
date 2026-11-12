@@ -25,7 +25,7 @@ export function Hero() {
         <h1 className="hero__name">
           {profile.name.split(' ').map((word, index) => (
             <Fragment key={word}>
-              <span style={{ animationDelay: `${index * 120}ms, 0s` }}>{word}</span>{' '}
+              <span style={{ animationDelay: `${index * 120}ms` }}>{word}</span>{' '}
             </Fragment>
           ))}
         </h1>
