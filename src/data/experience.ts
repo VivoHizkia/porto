@@ -18,7 +18,7 @@ export const jobs: Job[] = [
       'Maintained the company web server (Apache) and MySQL databases, monitoring user data and system health with SQL queries to keep services stable.',
       'Built a PHP load balancing system that spreads incoming traffic across servers, preventing crashes during traffic spikes.',
       'Wrote an automated recovery script in PHP that brings services back up after unexpected outages.',
-      'Supervised team members, assigning tasks and coordinating day-to-day web operations.',
+      'Coordinated day-to-day web operations with the rest of the team.',
     ],
   },
   {

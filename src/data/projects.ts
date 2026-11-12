@@ -8,6 +8,8 @@ export type Project = {
   repo?: string
   live?: string
   cover?: CoverKind
+  eyebrow?: string
+  headline?: string
   kind?: ProjectKind
 }
 
@@ -32,6 +34,8 @@ export const featuredProjects: Project[] = [
     layers: ['interface', 'server', 'data'],
     repo: repo('Ai-agent-trading'),
     cover: 'trading',
+    eyebrow: 'CRYPTO FUTURES · AUTOMATION',
+    headline: 'TRADE.\nTEST. REPEAT.',
   },
   {
     name: 'TemplateBin',
@@ -41,6 +45,8 @@ export const featuredProjects: Project[] = [
     layers: ['interface', 'server', 'data'],
     repo: repo('TEMPLATEBIN'),
     cover: 'templates',
+    eyebrow: 'MARKETPLACE · FULL STACK',
+    headline: 'Your next site,\nyour own way.',
   },
   {
     name: 'PlacidWay Knowledge Chatbot',
@@ -50,6 +56,8 @@ export const featuredProjects: Project[] = [
     layers: ['interface', 'server'],
     repo: repo('Built-chatbot-assessment'),
     cover: 'chat',
+    eyebrow: 'AI · KNOWLEDGE RETRIEVAL',
+    headline: 'Answers with\na source.',
     live: 'https://built-chatbot-assessment.vercel.app',
   },
   {
@@ -60,6 +68,8 @@ export const featuredProjects: Project[] = [
     layers: ['interface', 'server', 'data'],
     repo: repo('accounting-system'),
     cover: 'ledger',
+    eyebrow: 'FINANCE · INTERNAL TOOLS',
+    headline: 'Every entry.\nAccounted for.',
   },
 ]
 

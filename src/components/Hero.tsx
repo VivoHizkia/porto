@@ -1,76 +1,79 @@
-import { Fragment, lazy, Suspense } from 'react'
-import { LAYER_LABELS, LAYER_ORDER, profile, stats, buildPhrases } from '../data/profile'
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { CountUp, Typewriter } from './Effects'
-import { SceneBoundary } from './SceneBoundary'
+import { LAYER_LABELS, LAYER_ORDER, profile, skillGroups, stats } from '../data/profile'
 
-const HeroScene = lazy(() => import('./HeroScene'))
-
-const LAYER_NOTES = {
-  interface: 'React, Next.js',
-  server: 'Node.js, Laravel',
-  data: 'MySQL, PostgreSQL',
+const LAYER_STACK = {
+  interface: 'React · Next.js',
+  server: 'Node.js · Laravel',
+  data: 'MySQL · PostgreSQL',
 }
 
 export function Hero() {
-  const reducedMotion = usePrefersReducedMotion()
+  const [firstLine, secondLine] = profile.tagline.split(' to ')
 
   return (
     <header className="hero" id="top">
-      <div className="hero__text">
+      <div className="hero__top">
+        <p className="eyebrow">
+          {profile.role} / {profile.location}
+        </p>
         <p className="hero__status">
           <i aria-hidden="true" />
-          Open to full-stack roles, {profile.location}
+          Open to full-stack roles
         </p>
-        <h1 className="hero__name">
-          {profile.name.split(' ').map((word, index) => (
-            <Fragment key={word}>
-              <span style={{ animationDelay: `${index * 120}ms` }}>{word}</span>{' '}
-            </Fragment>
-          ))}
-        </h1>
-        <p className="hero__role">{profile.role}</p>
-        <p className="hero__build">
-          I build <Typewriter phrases={buildPhrases} />
-        </p>
-        <p className="hero__intro">{profile.intro}</p>
-        <div className="hero__actions">
-          <a className="button button--primary" href="#projects">
-            View projects
-          </a>
-          <a className="button" href="#contact">
-            Contact me
-          </a>
-        </div>
-        <dl className="hero__stats">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <dd>
-                <CountUp to={stat.value} suffix={stat.suffix} />
-              </dd>
-              <dt>{stat.label}</dt>
-            </div>
-          ))}
-        </dl>
       </div>
 
-      <div className="hero__stage">
-        <div className="hero__canvas">
-          <SceneBoundary fallback={<div className="hero__fallback" aria-hidden="true" />}>
-            <Suspense fallback={null}>
-              <HeroScene animated={!reducedMotion} />
-            </Suspense>
-          </SceneBoundary>
+      <h1 className="hero__name">
+        Vivo Hizkia
+        <br />
+        Imanuel
+      </h1>
+
+      <div className="hero__grid">
+        <div>
+          <p className="hero__tagline">
+            {firstLine}
+            <br />
+            to {secondLine}
+          </p>
+          <div className="hero__actions">
+            <a className="button button--dark" href="#projects">
+              View projects <span aria-hidden="true">↓</span>
+            </a>
+            <a className="text-link" href="#contact">
+              Contact me <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-        <ul className="hero__legend">
-          {LAYER_ORDER.map((layer) => (
-            <li key={layer} data-layer={layer}>
-              <strong>{LAYER_LABELS[layer]}</strong>
-              <span>{LAYER_NOTES[layer]}</span>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <p className="hero__intro">{profile.intro}</p>
+          <dl className="hero__stats">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <dd>
+                  {stat.value}
+                  {stat.suffix}
+                </dd>
+                <dt>{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
+
+      <ol className="stack-band" aria-label="The layers I work across">
+        {LAYER_ORDER.map((layer, index) => {
+          const group = skillGroups.find((item) => item.layer === layer)
+          return (
+            <li key={layer}>
+              <span className="stack-band__index">0{index + 1}</span>
+              <div>
+                <strong>{LAYER_LABELS[layer]}</strong>
+                <p>{group?.summary}</p>
+                <small>{LAYER_STACK[layer]}</small>
+              </div>
+            </li>
+          )
+        })}
+      </ol>
     </header>
   )
 }
