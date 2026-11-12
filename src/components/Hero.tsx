@@ -7,8 +7,8 @@ const HeroScene = lazy(() => import('./HeroScene'))
 
 const LAYER_NOTES = {
   interface: 'React, Next.js',
-  server: 'Node.js, Hono',
-  data: 'PostgreSQL, Prisma',
+  server: 'Node.js, Laravel',
+  data: 'MySQL, PostgreSQL',
 }
 
 export function Hero() {
@@ -19,6 +19,7 @@ export function Hero() {
       <div className="hero__text">
         <h1 className="hero__name">{profile.name}</h1>
         <p className="hero__role">{profile.role}</p>
+        <p className="hero__place">{profile.location}</p>
         <p className="hero__intro">{profile.intro}</p>
         <div className="hero__actions">
           <a className="button button--primary" href="#projects">

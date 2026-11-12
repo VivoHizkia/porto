@@ -164,9 +164,14 @@ a:hover {
   color: var(--server);
 }
 
+.hero__place {
+  margin-top: 0.2rem;
+  color: var(--muted);
+}
+
 .hero__intro {
   max-width: 34rem;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   color: var(--muted);
   font-size: 1.125rem;
 }
@@ -284,8 +289,8 @@ a:hover {
 
 .skills {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 1.5rem;
   margin-top: 2.5rem;
 }
 
@@ -312,6 +317,81 @@ a:hover {
   margin-top: 1rem;
   display: grid;
   gap: 0.3rem;
+}
+
+/* Experience */
+
+.timeline {
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: 0.5rem clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.timeline__when {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline__when span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.timeline h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.timeline h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.timeline__where {
+  margin-top: 0.2rem;
+  color: var(--server);
+}
+
+.timeline--compact {
+  margin-top: 1.5rem;
+}
+
+.timeline--compact .timeline__item {
+  padding: 1.25rem 0;
+}
+
+.timeline--compact .timeline__where {
+  color: var(--muted);
+}
+
+.timeline__points {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 44rem;
+  margin-top: 0.9rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  color: var(--muted);
+}
+
+.timeline__points li::marker {
+  color: var(--line);
 }
 
 /* Projects */
@@ -484,6 +564,17 @@ a:hover {
   }
 }
 
+@media (max-width: 40rem) {
+  .nav__name {
+    display: none;
+  }
+
+  .nav__links {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 @media (max-width: 52rem) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
@@ -498,21 +589,13 @@ a:hover {
     gap: 2.6rem;
   }
 
-  .featured .project {
+  .featured .project,
+  .timeline__item {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 30rem) {
-  .nav__name {
-    font-size: 0.95rem;
-  }
-
-  .nav__links {
-    gap: 0.9rem;
-    font-size: 0.9rem;
-  }
-
   .hero__canvas {
     height: 18rem;
     min-height: 0;

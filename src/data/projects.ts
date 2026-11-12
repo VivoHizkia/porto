@@ -5,7 +5,7 @@ export type Project = {
   summary: string
   tech: string[]
   layers: Layer[]
-  repo: string
+  repo?: string
   live?: string
 }
 
@@ -49,6 +49,37 @@ export const featuredProjects: Project[] = [
 
 export const moreProjects: Project[] = [
   {
+    name: 'BengkelOnline',
+    summary:
+      'An Android app for car workshops built with MVVM. Firebase handles sign-in, Firestore and Realtime Database storage, Cloud Functions, and push notifications.',
+    tech: ['Kotlin', 'Jetpack Compose', 'Firebase'],
+    layers: ['interface', 'server', 'data'],
+    repo: repo('BengkelOnline'),
+  },
+  {
+    name: 'BlockNest',
+    summary:
+      'A cross-platform, Twitter-style forum for cryptocurrency users, with user and post search and backend APIs for posts and real-time interactions.',
+    tech: ['Ionic', 'React', 'Tailwind CSS', 'PHP', 'Python', 'Node.js'],
+    layers: ['interface', 'server', 'data'],
+    repo: repo('BlockNest'),
+  },
+  {
+    name: 'SDN Cihuni II school website',
+    summary:
+      'A Laravel CMS with an admin panel that lets school staff manage homepage text, images, and documents without coding.',
+    tech: ['Laravel', 'MySQL'],
+    layers: ['interface', 'server', 'data'],
+  },
+  {
+    name: 'Fishing Tycoon',
+    summary:
+      'An open-world desktop fishing game: catch and sell fish, buy gear, and explore new areas, with endless level progression and an in-game economy.',
+    tech: ['Unity', 'C#'],
+    layers: ['interface'],
+    repo: repo('Fishing-Tycon'),
+  },
+  {
     name: 'Klipin',
     summary:
       'A toolkit for short-video creators: hook, idea, and hashtag generators, a saved library, and a weekly schedule planner with calendar export.',
@@ -85,5 +116,12 @@ export const moreProjects: Project[] = [
     tech: ['Python'],
     layers: ['server', 'data'],
     repo: repo('testcode'),
+  },
+  {
+    name: 'Tidy Tide Laundry',
+    summary:
+      'A responsive single-page WordPress site for a laundry business, set up so services and prices can be updated without code.',
+    tech: ['WordPress'],
+    layers: ['interface'],
   },
 ]

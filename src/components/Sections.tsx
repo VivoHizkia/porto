@@ -1,4 +1,5 @@
 import { profile, skillGroups } from '../data/profile'
+import { jobs, schools } from '../data/experience'
 import { featuredProjects, moreProjects, type Project } from '../data/projects'
 import { LayerMarks } from './LayerMarks'
 
@@ -11,6 +12,9 @@ export function Nav() {
       <ul className="nav__links">
         <li>
           <a href="#about">About</a>
+        </li>
+        <li>
+          <a href="#experience">Experience</a>
         </li>
         <li>
           <a href="#projects">Projects</a>
@@ -30,8 +34,8 @@ export function About() {
         What I work with
       </h2>
       <p className="section__lead">
-        Most of my projects are TypeScript from top to bottom. These are the tools I have shipped
-        with, grouped by the layer of the stack they belong to.
+        These are the tools I have worked with, on the job and in my own projects, grouped by the
+        layer of the stack they belong to.
       </p>
       <div className="skills">
         {skillGroups.map((group) => (
@@ -51,6 +55,7 @@ export function About() {
 }
 
 function ProjectLinks({ project }: { project: Project }) {
+  if (!project.live && !project.repo) return null
   return (
     <p className="project__links">
       {project.live && (
@@ -58,9 +63,11 @@ function ProjectLinks({ project }: { project: Project }) {
           Live demo
         </a>
       )}
-      <a href={project.repo} target="_blank" rel="noreferrer">
-        Source on GitHub
-      </a>
+      {project.repo && (
+        <a href={project.repo} target="_blank" rel="noreferrer">
+          Source on GitHub
+        </a>
+      )}
     </p>
   )
 }
@@ -102,7 +109,7 @@ export function Projects() {
         ))}
       </div>
 
-      <h3 className="section__subtitle">Smaller builds</h3>
+      <h3 className="section__subtitle">More projects</h3>
       <div className="more">
         {moreProjects.map((project) => (
           <article className="project project--small" key={project.name}>
@@ -120,6 +127,50 @@ export function Projects() {
   )
 }
 
+export function Experience() {
+  return (
+    <section className="section" id="experience" aria-labelledby="experience-title">
+      <h2 className="section__title" id="experience-title">
+        Experience
+      </h2>
+      <ol className="timeline">
+        {jobs.map((job) => (
+          <li className="timeline__item" key={job.role + job.period}>
+            <p className="timeline__when">
+              {job.period}
+              <span>{job.location}</span>
+            </p>
+            <div>
+              <h3>{job.role}</h3>
+              <p className="timeline__where">
+                {job.company}, {job.kind.toLowerCase()}
+              </p>
+              <ul className="timeline__points">
+                {job.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <h3 className="section__subtitle">Education</h3>
+      <ol className="timeline timeline--compact">
+        {schools.map((school) => (
+          <li className="timeline__item" key={school.name}>
+            <p className="timeline__when">{school.period}</p>
+            <div>
+              <h4>{school.name}</h4>
+              <p className="timeline__where">{school.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
 export function Contact() {
   return (
     <section className="section contact" id="contact" aria-labelledby="contact-title">
@@ -127,7 +178,8 @@ export function Contact() {
         Get in touch
       </h2>
       <p className="section__lead">
-        I am looking for a full-stack developer role. Email is the fastest way to reach me.
+        I am looking for a full-stack developer role and I am based in {profile.location}. Email is
+        the fastest way to reach me.
       </p>
       <a className="contact__email" href={`mailto:${profile.email}`}>
         {profile.email}
