@@ -506,6 +506,11 @@ button {
   --cover-ink: #d6e3ff;
 }
 
+.cover[data-tone='invoice'] {
+  --cover-bg: #4a3520;
+  --cover-ink: #f6dcb0;
+}
+
 .cover[data-tone='ledger'] {
   --cover-bg: #3a2c3a;
   --cover-ink: #f3cfe3;

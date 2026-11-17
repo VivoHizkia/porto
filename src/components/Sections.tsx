@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { jobs, schools } from '../data/experience'
 import { profile, skillGroups } from '../data/profile'
-import { featuredProjects, moreProjects, PROJECT_FILTERS, type Project, type ProjectKind } from '../data/projects'
+import { featuredProjects, moreProjects, PROJECT_FILTERS, type Project, type ProjectFilter } from '../data/projects'
 import { Cover } from './Covers'
 
 const NAV_LINKS = [
@@ -213,8 +213,10 @@ export function Experience() {
 }
 
 export function Archive() {
-  const [filter, setFilter] = useState<ProjectKind | 'all'>('all')
-  const visible = moreProjects.filter((project) => filter === 'all' || project.kind === filter)
+  const [filter, setFilter] = useState<ProjectFilter>('all')
+  const visible = moreProjects.filter(
+    (project) => filter === 'all' || (filter === 'ai' ? project.ai === true : project.kind === filter),
+  )
 
   return (
     <section className="section" id="archive" aria-labelledby="archive-title">

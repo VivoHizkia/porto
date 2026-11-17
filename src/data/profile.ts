@@ -13,7 +13,7 @@ export const profile = {
   role: 'Full-Stack Developer',
   location: 'Tangerang Selatan, Indonesia',
   intro:
-    'One year of full-time web operations, with internships and freelance work before that. I build dashboards, internal systems, and mobile apps that connect people, APIs, and data.',
+    'One year of full-time web operations, with internships and freelance work before that. I build dashboards, internal systems, and mobile apps that connect people, APIs, and data, and lately AI tools: a retrieval chatbot, invoice extraction with human review, and scheduled automations.',
   tagline: 'From the first pixel to the last database query.',
   email: 'vivoimanuel22@gmail.com',
   phoneDisplay: '+62 812-1121-1030',

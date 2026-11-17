@@ -11,13 +11,17 @@ export type Project = {
   eyebrow?: string
   headline?: string
   kind?: ProjectKind
+  ai?: boolean
 }
 
-export type CoverKind = 'trading' | 'templates' | 'chat' | 'ledger'
+export type CoverKind = 'trading' | 'templates' | 'chat' | 'invoice' | 'ledger'
 export type ProjectKind = 'web' | 'mobile' | 'python'
 
-export const PROJECT_FILTERS: { value: ProjectKind | 'all'; label: string }[] = [
+export type ProjectFilter = ProjectKind | 'ai' | 'all'
+
+export const PROJECT_FILTERS: { value: ProjectFilter; label: string }[] = [
   { value: 'all', label: 'All' },
+  { value: 'ai', label: 'AI and automation' },
   { value: 'web', label: 'Web' },
   { value: 'mobile', label: 'Mobile and games' },
   { value: 'python', label: 'Python' },
@@ -61,6 +65,17 @@ export const featuredProjects: Project[] = [
     live: 'https://built-chatbot-assessment.vercel.app',
   },
   {
+    name: 'Faktur Otomatis',
+    summary:
+      'Turns photos of invoices and receipts into structured data. A vision model extracts the fields, a Zod schema validates them, and six rule checks in code decide what is approved automatically and what goes to a human review queue. Measured against 20 sample invoices, with CSV and signed webhook export.',
+    tech: ['Next.js 16', 'TypeScript', 'Zod', 'Gemini', 'Vitest'],
+    layers: ['interface', 'server', 'data'],
+    repo: repo('fakturin'),
+    cover: 'invoice',
+    eyebrow: 'AI · DOCUMENT EXTRACTION',
+    headline: 'Read. Check.\nApprove.',
+  },
+  {
     name: 'Accounting System',
     summary:
       'A full-stack accounting app: chart of accounts, journals, invoices, payments, contacts, and reports, with an audit log and JWT authentication.',
@@ -74,6 +89,15 @@ export const featuredProjects: Project[] = [
 ]
 
 export const moreProjects: Project[] = [
+  {
+    name: 'Page Watch',
+    ai: true,
+    summary:
+      'A daily GitHub Actions job that checks a list of web pages, compares each with its stored snapshot, summarises what changed with an LLM, and sends a Telegram message. No server and no database.',
+    tech: ['TypeScript', 'Node.js', 'GitHub Actions', 'Gemini', 'Telegram'],
+    layers: ['server', 'data'],
+    repo: repo('Page-Watch'),
+  },
   {
     name: 'BengkelOnline',
     kind: 'mobile',
@@ -112,6 +136,7 @@ export const moreProjects: Project[] = [
   {
     name: 'Klipin',
     kind: 'web',
+    ai: true,
     summary:
       'A toolkit for short-video creators: hook, idea, and hashtag generators, a saved library, and a weekly schedule planner with calendar export.',
     tech: ['React', 'Express', 'Tailwind CSS', 'Claude API'],
